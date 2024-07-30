@@ -14,7 +14,17 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  const categoryWise = [...transactions].reduce((pre,cur)=>{
+    pre[cur.category] = pre[cur.category]+cur.price||cur.price
+    return pre
+},[])
+
+const arrnew = []
+Object.keys(categoryWise).forEach(function(key, index) {
+    arrnew.push({category:`${key}`,totalSpent:categoryWise[key]})
+  });
+
+return arrnew;
 }
 
 module.exports = calculateTotalSpentByCategory;
